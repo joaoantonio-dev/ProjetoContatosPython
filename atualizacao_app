@@ -6,20 +6,18 @@ agenda = []
 def adicionar_contato():
     nome = nome_entry.get()
     telefone = telefone_entry.get()
-    endereco = endereco_entry.get()
 
-    if nome and telefone and endereco:
-        agenda.append([nome, telefone, endereco])
+    if nome and telefone:
+        agenda.append([nome, telefone])
         messagebox.showinfo("Sucesso", f"Contato '{nome}' adicionado!")
         nome_entry.delete(0, tk.END)
         telefone_entry.delete(0, tk.END)
-        endereco_entry.delete(0, tk.END)
         atualizar_lista()
     else:
         messagebox.showwarning("Atenção", "Preencha todos os campos!")
 
 def atualizar_lista():
-    lista_contatos.delete(lista_contatos.get_children())
+    lista_contatos.delete(*lista_contatos.get_children())
     for i, contato in enumerate(agenda):
         lista_contatos.insert("", "end", iid=i, values=contato)
 
@@ -32,7 +30,7 @@ def remover_contato():
         atualizar_lista()
     else:
         messagebox.showwarning("Atenção", "Selecione um contato para remover!")
-        
+
 root = tk.Tk()
 root.title("Agenda de Contatos")
 root.geometry("700x400")
@@ -52,7 +50,6 @@ ttk.Label(frame_inputs, text="Telefone:").grid(row=1, column=0, sticky="e", padx
 
 nome_entry = ttk.Entry(frame_inputs, width=50)
 telefone_entry = ttk.Entry(frame_inputs, width=50)
-endereco_entry = ttk.Entry(frame_inputs, width=50)
 
 nome_entry.grid(row=0, column=1, padx=5, pady=5)
 telefone_entry.grid(row=1, column=1, padx=5, pady=5)
