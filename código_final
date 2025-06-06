@@ -104,13 +104,4 @@ lista_contatos.column("telefone", anchor="w", width=120)
 
 lista_contatos.pack(fill="both", expand=True)
 
-barra_inferior = tk.Frame(root, bg="white", height=50)
-barra_inferior.pack(fill="x", side="bottom")
-
-opcoes = ["Teclado", "Recentes", "Contatos"]
-for op in opcoes:
-    cor = "black" if op == "Contatos" else "gray"
-    label = tk.Label(barra_inferior, text=op, font=("Segoe UI", 10), fg=cor, bg="white")
-    label.pack(side="left", expand=True)
-
 root.mainloop()
